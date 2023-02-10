@@ -17,16 +17,24 @@
         {% endif %}
         <strong>{{ boldmessage }}</strong><br />
     </div>
-    <h1>Most Liked Catgegories</h1>
+    <h1>Most Liked Categories</h1>
     <ul>
         {% for category in categories %} <li>
-            <!-- The following line is changed to add an HTML hyperlink -->
+            
             <a href="/rango/category/{{ category.slug }}/">{{ category.name }}</a>
         </li>
         {% endfor %}
     </ul>
 
     <h1>Most Viewed Pages</h1>
+    <ul>
+        {% for page in pages %} <li>
+            
+            <a href="/rango/page/{{ page.slug }}/">{{ page.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+
     <div>
         <a href="/about/">About</a><br />
         <ahref="/rango/add_category/">AddaNewCategory</a><br/>
