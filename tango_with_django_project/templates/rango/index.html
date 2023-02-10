@@ -8,16 +8,29 @@
 
 <body>
     <h1>Rango says...</h1>
-    
-    <div>
-        hey there partner! <br />
-        <strong>{{ boldmessage }}</strong><br />
-    </div>
 
     <div>
-        <a href="/about/">About</a><br /> 
-        <img src="{% static 'images/L1000496.jpg' %}" 
-        alt = "Picture of a car" />
+        {% if user.is_authenticated %} 
+            howdy {{ user.username }}!
+        {% else %}
+            hey there partner!
+        {% endif %}
+        <strong>{{ boldmessage }}</strong><br />
+    </div>
+    <h1>Most Liked Catgegories</h1>
+    <ul>
+        {% for category in categories %} <li>
+            <!-- The following line is changed to add an HTML hyperlink -->
+            <a href="/rango/category/{{ category.slug }}/">{{ category.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h1>Most Viewed Pages</h1>
+    <div>
+        <a href="/about/">About</a><br />
+        <ahref="/rango/add_category/">AddaNewCategory</a><br/>
+        <img src="{% static 'images/L1000496.jpg' %}" alt="Picture of a car" />
     </div>
 
 </body>

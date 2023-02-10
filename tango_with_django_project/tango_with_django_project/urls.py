@@ -20,14 +20,21 @@ from rango import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.conf.urls import url 
+from rango import views
+
 app_name = 'rango'
 
+
 urlpatterns = [
-    path("", views.index, name="index"),
-    path("about/",views.about, name = "about"),
-
-    path("rango/", views.rango, name = "Rango"),
-
-    path("admin/", admin.site.urls),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('', views.index, name='index'),
+    path('about/', views.about, name='about'),
+    path('category/<slug:category_name_slug>/add_page/', views.add_page,
+            name='add_page'),
+    path('category/<slug:category_name_slug>/', views.show_category,
+            name='show_category'),
+    path('add_category/', views.add_category, name='add_category'), 
+    path('register/', views.register, name='register'),
+    path('login/', views.user_login, name='login'),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
